@@ -295,6 +295,10 @@ group by 專長名稱 order by coach_total desc limit 1;
 
 -- 6-3. 查詢：計算 11 月份組合包方案的銷售數量
 -- 顯示須包含以下欄位： 組合包方案名稱, 銷售數量
+SELECT cpk.name 組合包方案名稱,COUNT(cp.credit_package_id) 銷售數量 FROM "CREDIT_PURCHASE" cp
+INNER JOIN "CREDIT_PACKAGE" cpk ON cp.credit_package_id = cpk.id
+Group BY (組合包方案名稱);
+
 
 -- 6-4. 查詢：計算 11 月份總營收（使用 purchase_at 欄位統計）
 -- 顯示須包含以下欄位： 總營收
