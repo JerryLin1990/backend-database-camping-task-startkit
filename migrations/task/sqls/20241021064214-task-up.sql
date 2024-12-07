@@ -111,6 +111,31 @@ VALUES
     -- 2. 教練`肌肉棒子` 需要有 `瑜伽` 專長
     -- 3. 教練`Q太郎` 需要有 `有氧運動` 與 `復健訓練` 專長
 
+INSERT INTO "COACH_LINK_SKILL" (coach_id, skill_id)
+SELECT id, (SELECT id FROM "SKILL" WHERE name = '重訓')
+FROM "COACH";
+
+INSERT INTO "COACH_LINK_SKILL" (coach_id, skill_id)
+SELECT id, (SELECT id FROM "SKILL" WHERE name = '瑜伽')
+FROM "COACH" WHERE user_id = (SELECT id FROM "USER" WHERE email = 'muscle@hexschooltest.io');
+
+INSERT INTO "COACH_LINK_SKILL" (coach_id, skill_id)
+SELECT 
+    id AS coach_id, 
+    (SELECT id FROM "SKILL" WHERE name = '有氧運動') AS skill_id
+FROM "COACH" 
+WHERE user_id = (SELECT id FROM "USER" WHERE email = 'starplatinum@hexschooltest.io')
+
+UNION ALL
+
+SELECT 
+    id AS coach_id, 
+    (SELECT id FROM "SKILL" WHERE name = '復健訓練') AS skill_id
+FROM "COACH" 
+WHERE user_id = (SELECT id FROM "USER" WHERE email = 'starplatinum@hexschooltest.io');
+
+
+
 -- 3-3 修改：更新教練的經驗年數，資料需求如下：
     -- 1. 教練`肌肉棒子` 的經驗年數為3年
     -- 2. 教練`Q太郎` 的經驗年數為5年
