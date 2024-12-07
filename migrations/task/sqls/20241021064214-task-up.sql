@@ -307,3 +307,6 @@ SELECT SUM(price_paid) 總營收 FROM "CREDIT_PURCHASE" WHERE purchase_at BETWEE
 
 -- 6-5. 查詢：計算 11 月份有預約課程的會員人數（需使用 Distinct，並用 created_at 和 status 欄位統計）
 -- 顯示須包含以下欄位： 預約會員人數
+
+SELECT  Count(Distinct user_id) 預約會員人數 FROM "COURSE_BOOKING"
+WHERE status!='課程已取消';
