@@ -282,7 +282,7 @@ INNER JOIN "USER" u ON c.user_id = u.id
 INNER JOIN "COACH_LINK_SKILL" cls ON c.id = cls.coach_id
 INNER JOIN "SKILL" s ON cls.skill_id = s.id
 WHERE s.name = '重訓'
-order by 經驗年數 DESC
+order by 經驗年數 DESC;
 -- 6-2 查詢：查詢每種專長的教練數量，並只列出教練數量最多的專長（需使用 group by, inner join 與 order by 與 limit 語法）
 -- 顯示須包含以下欄位： 專長名稱, coach_total
 
